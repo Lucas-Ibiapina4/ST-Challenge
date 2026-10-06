@@ -1,21 +1,25 @@
 [gd_scene format=3 uid="uid://8lj3jwhex7fq"]
 
 [ext_resource type="PackedScene" uid="uid://c6iselkr106xh" path="res://Prefabs/player.tscn" id="1_fr3la"]
+[ext_resource type="PackedScene" uid="uid://daljnlm5chr38" path="res://Prefabs/door.tscn" id="1_pkws4"]
 [ext_resource type="PackedScene" uid="uid://2fws08272vcf" path="res://Prefabs/light.tscn" id="2_pkws4"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ycpi2"]
 
 [node name="Level01" type="Node2D" unique_id=2013607221 groups=["floor"]]
 
+[node name="door" parent="." unique_id=212077974 instance=ExtResource("1_pkws4")]
+position = Vector2(112, -18)
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=686021449]
 position = Vector2(-5, -111)
 zoom = Vector2(3, 3)
 
 [node name="Player" parent="." unique_id=1030101800 instance=ExtResource("1_fr3la")]
-position = Vector2(-113, -109)
+position = Vector2(-113, -9)
 
 [node name="Light" parent="." unique_id=1077566341 instance=ExtResource("2_pkws4")]
-position = Vector2(2, -149)
+position = Vector2(7, -182)
 rotation = -6.2831855
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=950439122]
