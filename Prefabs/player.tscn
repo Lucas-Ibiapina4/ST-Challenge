@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://c6iselkr106xh"]
+
+[ext_resource type="Texture2D" uid="uid://3q3qkersr7b6" path="res://Assets/Princess/animatedPrincess-Sheet.png" id="1_knrd4"]
+[ext_resource type="Script" uid="uid://cy3jjuwrrvpuk" path="res://Scripts/player_mover_component.gd" id="2_xywv5"]
+[ext_resource type="Script" uid="uid://dr1ceyw0eab8m" path="res://Scripts/cristal_conjurer_component.gd" id="3_1cb6o"]
+[ext_resource type="PackedScene" uid="uid://bofn53jjdc2an" path="res://Prefabs/cristal.tscn" id="4_2nftw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hck1p"]
+atlas = ExtResource("1_knrd4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_juxdh"]
+atlas = ExtResource("1_knrd4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qbli"]
+atlas = ExtResource("1_knrd4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08u7w"]
+atlas = ExtResource("1_knrd4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgmex"]
+atlas = ExtResource("1_knrd4")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nftw"]
+atlas = ExtResource("1_knrd4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knrd4"]
+atlas = ExtResource("1_knrd4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xbkd"]
+atlas = ExtResource("1_knrd4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vpsw"]
+atlas = ExtResource("1_knrd4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m62uw"]
+atlas = ExtResource("1_knrd4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b30ri"]
+atlas = ExtResource("1_knrd4")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d3ie7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hck1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_juxdh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qbli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08u7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgmex")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nftw")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knrd4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xbkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vpsw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m62uw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b30ri")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uyp4n"]
+height = 28.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gvdsg"]
+radius = 3.0
+height = 15.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1030101800 groups=["player"]]
+collision_layer = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=962762715]
+position = Vector2(0, -11.700001)
+scale = Vector2(1, 0.983)
+sprite_frames = SubResource("SpriteFrames_d3ie7")
+animation = &"run"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1804763724]
+position = Vector2(0, -10)
+shape = SubResource("CapsuleShape2D_uyp4n")
+
+[node name="PlayerMoverComponent" type="Node" parent="." unique_id=87603433]
+script = ExtResource("2_xywv5")
+
+[node name="CristalConjurerComponent" type="Node2D" parent="." unique_id=2829203]
+script = ExtResource("3_1cb6o")
+crystal_scene = ExtResource("4_2nftw")
+
+[node name="SpawnMarker" type="Marker2D" parent="CristalConjurerComponent" unique_id=746135054]
+position = Vector2(13, -8)
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="CristalConjurerComponent/SpawnMarker" unique_id=676555327]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_gvdsg")
+target_position = Vector2(0, 0)
+collision_mask = 9
