@@ -21,8 +21,13 @@ EventBus="*uid://bn70fkjq8f4rx"
 
 [display]
 
+window/size/mode=2
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[dotnet]
+
+project/assembly_name="Sweet Treat"
 
 [global_group]
 
