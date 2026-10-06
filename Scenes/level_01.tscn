@@ -5,6 +5,12 @@
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ycpi2"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3ie7"]
+size = Vector2(104.75, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ycpi2"]
+size = Vector2(93, 11)
+
 [node name="Level01" type="Node2D" unique_id=2013607221 groups=["floor"]]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=686021449]
@@ -15,12 +21,24 @@ zoom = Vector2(3, 3)
 position = Vector2(-113, -109)
 
 [node name="Light" parent="." unique_id=1077566341 instance=ExtResource("2_pkws4")]
-position = Vector2(2, -149)
-rotation = -6.2831855
+position = Vector2(188.00002, -136)
+rotation = 1.4224434
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=950439122]
 position = Vector2(-43, -10)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1557123683]
+[node name="Ground" type="CollisionShape2D" parent="StaticBody2D" unique_id=1557123683]
 position = Vector2(0, 4)
 shape = SubResource("WorldBoundaryShape2D_ycpi2")
+
+[node name="Platform 1" type="CollisionShape2D" parent="StaticBody2D" unique_id=1246653508]
+position = Vector2(-101.625, -25)
+shape = SubResource("RectangleShape2D_d3ie7")
+
+[node name="Platform 2" type="CollisionShape2D" parent="StaticBody2D" unique_id=996662391]
+position = Vector2(177, -27)
+shape = SubResource("RectangleShape2D_d3ie7")
+
+[node name="FloatPlatform" type="CollisionShape2D" parent="StaticBody2D" unique_id=1152423290]
+position = Vector2(37, -91)
+shape = SubResource("RectangleShape2D_ycpi2")
