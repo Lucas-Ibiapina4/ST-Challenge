@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 ## CrystalConjurerComponent — instancia e recolhe cristais no andar.
 ## Escolhe a rotação ANTES de conjurar; depois de conjurado o cristal é estático.
 ## Controla a cota do andar e emite crystal_inventory_changed.
@@ -7,18 +7,18 @@ const STEP_DEG := 45.0
 const STEPS := 8                 # 360 / 45
 const REPEAT_DELAY := 0.25       # espera antes de começar a repetir
 const REPEAT_RATE := 0.12        # intervalo entre passos com a tecla segurada
-const SPAWN_OFFSET_X := 15.0     # distância do cristal à frente da princesa
+const SPAWN_OFFSET_X := 40.0     # distância do cristal à frente da princesa
 const PICKUP_RANGE := 48.0       # alcance para recolher um cristal
 const CRYSTAL_GROUP := "cristals"
 
 @export var crystal_scene: PackedScene
 @export var crystal_types: Array[String] = ["Reflector", "Refractor"]
-@onready var shape_cast: ShapeCast2D = $SpawnMarker/ShapeCast2D
 @onready var spawn_marker: Marker2D = $SpawnMarker
+@onready var shape_cast: ShapeCast2D = $SpawnMarker/ShapeCast2D
 @onready var mover: Node = get_parent().get_node("PlayerMoverComponent")
 @onready var player: CharacterBody2D = $".."
 
-var remaining_count := 5         # cristais que ainda podem ser conjurados
+var remaining_count := 0         # cristais que ainda podem ser conjurados
 var active_type_index := 0       # índice em crystal_types
 var pending_step := 0            # 0..7 — rotação escolhida, em passos de 45°
 var _next_step_in := 0.0
@@ -76,26 +76,15 @@ func _cycle_type() -> void:
 	
 # --- Conjurar ------------------------------------------------------------
 func _try_conjure() -> void:
-	if crystal_scene == null:
-		push_warning("crystal_scene não atribuído no Inspector")
-		return
 	if remaining_count <= 0:
-		push_warning("cota esgotada (remaining_count = %d)" % remaining_count)
-		return
-	var floor_node := _current_floor()
-	if floor_node == null:
-		push_warning("nenhum nó no grupo 'floor'")
 		return
 	if not _space_is_free():
-		push_warning("espaço ocupado em %s" % spawn_marker.global_position)
 		return
-
 	var crystal := crystal_scene.instantiate() as Node2D
 	crystal.crystal_type = active_type()
-	floor_node.add_child(crystal)
 	crystal.global_position = spawn_marker.global_position
 	crystal.rotation_degrees = pending_rotation_degrees()
-
+	_current_floor().add_child(crystal)
 	remaining_count -= 1
 	_emit_inventory()
 	
