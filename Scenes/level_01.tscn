@@ -1,29 +1,26 @@
 [gd_scene format=3 uid="uid://8lj3jwhex7fq"]
 
-[ext_resource type="PackedScene" uid="uid://c6iselkr106xh" path="res://PreFab/player.tscn" id="1_fr3la"]
-[ext_resource type="PackedScene" uid="uid://2fws08272vcf" path="res://PreFab/light.tscn" id="2_pkws4"]
-[ext_resource type="PackedScene" uid="uid://bofn53jjdc2an" path="res://PreFab/cristal.tscn" id="3_pkws4"]
+[ext_resource type="PackedScene" uid="uid://c6iselkr106xh" path="res://Prefabs/player.tscn" id="1_fr3la"]
+[ext_resource type="PackedScene" uid="uid://2fws08272vcf" path="res://Prefabs/light.tscn" id="2_pkws4"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ycpi2"]
 
-[node name="Level01" type="Node2D" unique_id=2013607221]
+[node name="Level01" type="Node2D" unique_id=2013607221 groups=["floor"]]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=686021449]
-position = Vector2(367, -337)
-zoom = Vector2(2, 2)
+position = Vector2(-5, -111)
+zoom = Vector2(3, 3)
 
 [node name="Player" parent="." unique_id=1030101800 instance=ExtResource("1_fr3la")]
-position = Vector2(262, -450)
+position = Vector2(-113, -109)
 
 [node name="Light" parent="." unique_id=1077566341 instance=ExtResource("2_pkws4")]
-position = Vector2(306, -350)
-
-[node name="Cristal" parent="." unique_id=337954845 instance=ExtResource("3_pkws4")]
-position = Vector2(516, -350)
-rotation = 0.7853982
+position = Vector2(2, -149)
+rotation = -6.2831855
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=950439122]
+position = Vector2(-43, -10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1557123683]
-position = Vector2(269, -207)
+position = Vector2(0, 4)
 shape = SubResource("WorldBoundaryShape2D_ycpi2")

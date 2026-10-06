@@ -7,7 +7,7 @@ extends Node2D
 
 var beam_points = []
 
-func _process(delta:):
+func _process(_delta: float) -> void:
 	
 	#Criaco do feixe, primeiro ele apaga o desenho de frames anteriores
 	#e depois dita que o inicio vai ser na origem do objeto
