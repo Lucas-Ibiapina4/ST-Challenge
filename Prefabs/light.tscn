@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cbo1qxv3fjtue" path="res://Scripts/light.gd" id="1_6tkx2"]
 
 [node name="Light" type="Node2D" unique_id=1077566341]
+z_index = -1
 rotation = -1.5707964
 script = ExtResource("1_6tkx2")
 
