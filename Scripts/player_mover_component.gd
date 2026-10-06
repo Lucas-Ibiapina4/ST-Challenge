@@ -1,7 +1,7 @@
 extends Node
 
-const SPEED = 200.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 140.0
+const JUMP_VELOCITY = -250.0
 var facing := 1
 
 @onready var player: CharacterBody2D = $".."
