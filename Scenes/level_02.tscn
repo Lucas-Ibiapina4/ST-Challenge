@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dy0uv4kd1e8ch"]
+
+[ext_resource type="PackedScene" uid="uid://c6iselkr106xh" path="res://Prefabs/player.tscn" id="1_wat38"]
+[ext_resource type="PackedScene" uid="uid://2fws08272vcf" path="res://Prefabs/light.tscn" id="2_ivlrf"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ycpi2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3ie7"]
+size = Vector2(66, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qvor"]
+size = Vector2(86, 20)
+
+[node name="Level01" type="Node2D" unique_id=2013607221 groups=["floor"]]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=686021449]
+position = Vector2(-5, -111)
+zoom = Vector2(3, 3)
+
+[node name="Player" parent="." unique_id=1030101800 instance=ExtResource("1_wat38")]
+position = Vector2(-113, -109)
+
+[node name="Light" parent="." unique_id=1077566341 instance=ExtResource("2_ivlrf")]
+position = Vector2(-80, -216)
+rotation = 0.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=950439122]
+position = Vector2(-43, -10)
+
+[node name="Ground" type="CollisionShape2D" parent="StaticBody2D" unique_id=1557123683]
+position = Vector2(0, 4)
+shape = SubResource("WorldBoundaryShape2D_ycpi2")
+
+[node name="Platform 1" type="CollisionShape2D" parent="StaticBody2D" unique_id=1246653508]
+position = Vector2(-121, -25)
+shape = SubResource("RectangleShape2D_d3ie7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1637899300]
+position = Vector2(-45, -7)
+shape = SubResource("RectangleShape2D_4qvor")

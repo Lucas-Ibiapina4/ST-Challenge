@@ -12,4 +12,4 @@ collision_mask = 9
 
 [node name="Feixe" type="Line2D" parent="." unique_id=815806780]
 points = PackedVector2Array(0, 0, 0, 331)
-width = 5.0
+width = 3.0
