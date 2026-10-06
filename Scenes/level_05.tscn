@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://n2rh4oepf6qf"]
+
+[ext_resource type="PackedScene" uid="uid://c6iselkr106xh" path="res://Prefabs/player.tscn" id="1_iwaca"]
+[ext_resource type="PackedScene" uid="uid://2fws08272vcf" path="res://Prefabs/light.tscn" id="2_nxh4y"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ycpi2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3ie7"]
+size = Vector2(71, 11.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qvor"]
+size = Vector2(120, 24.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ycpi2"]
+size = Vector2(99.875, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6o4py"]
+size = Vector2(52, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvdsg"]
+size = Vector2(0.25, 129)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8dyer"]
+size = Vector2(81.15625, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7ooj"]
+size = Vector2(53, 9)
+
+[node name="Level01" type="Node2D" unique_id=2013607221 groups=["floor"]]
+position = Vector2(197, -4)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=686021449]
+position = Vector2(-5, -111)
+zoom = Vector2(3, 3)
+
+[node name="Player" parent="." unique_id=1030101800 instance=ExtResource("1_iwaca")]
+position = Vector2(13, -194)
+
+[node name="Light" parent="." unique_id=1077566341 instance=ExtResource("2_nxh4y")]
+position = Vector2(-5, -218.00002)
+rotation = -0.7853982
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=950439122]
+position = Vector2(-43, -10)
+
+[node name="Ground" type="CollisionShape2D" parent="StaticBody2D" unique_id=1557123683]
+position = Vector2(0, 4)
+shape = SubResource("WorldBoundaryShape2D_ycpi2")
+
+[node name="Platform 1" type="CollisionShape2D" parent="StaticBody2D" unique_id=1246653508]
+position = Vector2(-119, -50)
+shape = SubResource("RectangleShape2D_d3ie7")
+
+[node name="Platform 2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1637899300]
+position = Vector2(40, -8)
+shape = SubResource("RectangleShape2D_4qvor")
+
+[node name="Platform 3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1534723263]
+position = Vector2(177.9375, -50)
+shape = SubResource("RectangleShape2D_ycpi2")
+
+[node name="Platform 4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1111453548]
+position = Vector2(38, -172)
+shape = SubResource("RectangleShape2D_6o4py")
+
+[node name="Platform 5" type="CollisionShape2D" parent="StaticBody2D" unique_id=492708306]
+position = Vector2(36.875, -145)
+shape = SubResource("RectangleShape2D_gvdsg")
+
+[node name="Platform 6" type="CollisionShape2D" parent="StaticBody2D" unique_id=2033928553]
+position = Vector2(187.57813, -94)
+shape = SubResource("RectangleShape2D_8dyer")
+
+[node name="Platform 7" type="CollisionShape2D" parent="StaticBody2D" unique_id=1820740396]
+position = Vector2(-127, -95)
+shape = SubResource("RectangleShape2D_o7ooj")
