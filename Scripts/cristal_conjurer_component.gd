@@ -18,7 +18,7 @@ const CRYSTAL_GROUP := "cristals"
 @onready var mover: Node = get_parent().get_node("PlayerMoverComponent")
 @onready var player: CharacterBody2D = $".."
 
-var remaining_count := 5         # cristais que ainda podem ser conjurados
+@export var remaining_count := 5         # cristais que ainda podem ser conjurados
 var active_type_index := 0       # índice em crystal_types
 var pending_step := 0            # 0..7 — rotação escolhida, em passos de 45°
 var _next_step_in := 0.0
@@ -91,6 +91,8 @@ func _try_conjure() -> void:
 		return
 
 	var crystal := crystal_scene.instantiate() as Node2D
+	print("[CONJURER] spawnando '%s' de %s | layer=%d | grupos=%s"
+	% [crystal.name, crystal_scene.resource_path, crystal.collision_layer, crystal.get_groups()])
 	crystal.crystal_type = active_type()
 	floor_node.add_child(crystal)
 	crystal.global_position = spawn_marker.global_position

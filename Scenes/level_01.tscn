@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://8lj3jwhex7fq"]
 
 [ext_resource type="PackedScene" uid="uid://c6iselkr106xh" path="res://Prefabs/player.tscn" id="1_fr3la"]
+[ext_resource type="PackedScene" uid="uid://daljnlm5chr38" path="res://Prefabs/door.tscn" id="1_pkws4"]
 [ext_resource type="PackedScene" uid="uid://2fws08272vcf" path="res://Prefabs/light.tscn" id="2_pkws4"]
 [ext_resource type="Texture2D" uid="uid://w66nqntc0ncj" path="res://Assets/Tiles/TileV1.png" id="3_pkws4"]
 
@@ -555,6 +556,9 @@ tile_set = SubResource("TileSet_pfp22")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=686021449]
 position = Vector2(-5, -111)
 zoom = Vector2(3, 3)
+
+[node name="door" parent="." unique_id=1651939149 instance=ExtResource("1_pkws4")]
+position = Vector2(163, -109)
 
 [node name="Player" parent="." unique_id=1030101800 instance=ExtResource("1_fr3la")]
 position = Vector2(-113, -109)
