@@ -67,8 +67,13 @@ func _physics_process(_delta: float) -> void:
 			#adiciona o ponto de colisao ao array e transforma ele em uma
 			#coordenada local pra gerar o caminho da luz
 			beam_points.append(to_local(collision_point))
-			var layer = object.get("collision_layer")
-			caminho.append("%s (pai: %s, layer: %s, grupos: %s)" % [object.name, object.get_parent().name, layer if layer != null else "tilemap", object.get_groups()])
+			var layer_info = object.collision_layer if object is CollisionObject2D else "N/A"
+			caminho.append("%s (pai: %s, layer: %s, grupos: %s)" % [
+				object.name, 
+				object.get_parent().name if object.get_parent() else "Nenhum", 
+				layer_info, 
+				object.get_groups()
+			])
 			
 			if _no_grupo(object, "cristals"):
 				
@@ -132,7 +137,6 @@ func _sync_receivers(hits: Dictionary) -> void:
 			_log("começou a atingir '%s'" % r.name)
 			r.light_entered(self)
 	_receivers_hit = hits
-	
 #verifica se o objeto (ou o pai dele) esta no grupo
 func _no_grupo(object: Node, grupo: StringName) -> bool:
 	return object.is_in_group(grupo) or (object.get_parent() != null and object.get_parent().is_in_group(grupo))
