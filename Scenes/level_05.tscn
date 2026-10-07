@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c6iselkr106xh" path="res://Prefabs/player.tscn" id="1_iwaca"]
 [ext_resource type="PackedScene" uid="uid://2fws08272vcf" path="res://Prefabs/light.tscn" id="2_nxh4y"]
+[ext_resource type="PackedScene" uid="uid://daljnlm5chr38" path="res://Prefabs/door.tscn" id="3_nxh4y"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ycpi2"]
 
@@ -34,10 +35,10 @@ position = Vector2(-5, -111)
 zoom = Vector2(3, 3)
 
 [node name="Player" parent="." unique_id=1030101800 instance=ExtResource("1_iwaca")]
-position = Vector2(13, -194)
+position = Vector2(7, -171)
 
 [node name="Light" parent="." unique_id=1077566341 instance=ExtResource("2_nxh4y")]
-position = Vector2(-5, -218.00002)
+position = Vector2(0, -215)
 rotation = -0.7853982
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=950439122]
@@ -48,11 +49,11 @@ position = Vector2(0, 4)
 shape = SubResource("WorldBoundaryShape2D_ycpi2")
 
 [node name="Platform 1" type="CollisionShape2D" parent="StaticBody2D" unique_id=1246653508]
-position = Vector2(-119, -50)
+position = Vector2(-116, -52)
 shape = SubResource("RectangleShape2D_d3ie7")
 
 [node name="Platform 2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1637899300]
-position = Vector2(40, -8)
+position = Vector2(30, -8)
 shape = SubResource("RectangleShape2D_4qvor")
 
 [node name="Platform 3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1534723263]
@@ -60,7 +61,7 @@ position = Vector2(177.9375, -50)
 shape = SubResource("RectangleShape2D_ycpi2")
 
 [node name="Platform 4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1111453548]
-position = Vector2(38, -172)
+position = Vector2(38, -148)
 shape = SubResource("RectangleShape2D_6o4py")
 
 [node name="Platform 5" type="CollisionShape2D" parent="StaticBody2D" unique_id=492708306]
@@ -72,5 +73,8 @@ position = Vector2(187.57813, -94)
 shape = SubResource("RectangleShape2D_8dyer")
 
 [node name="Platform 7" type="CollisionShape2D" parent="StaticBody2D" unique_id=1820740396]
-position = Vector2(-127, -95)
+position = Vector2(-127, -89)
 shape = SubResource("RectangleShape2D_o7ooj")
+
+[node name="door" parent="StaticBody2D" unique_id=1651939149 instance=ExtResource("3_nxh4y")]
+position = Vector2(23, -163)
