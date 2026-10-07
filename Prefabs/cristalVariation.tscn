@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ddkeuaig81mfw"]
+
+[ext_resource type="Script" uid="uid://b01my856tp25b" path="res://Scripts/cristal.gd" id="1_a6gmn"]
+[ext_resource type="Texture2D" uid="uid://cgvcc85v6026g" path="res://Assets/Tiles/crystal-pixel.png" id="2_a52ap"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2nftw"]
+a = Vector2(0, -11.999999)
+b = Vector2(0, 4.9999995)
+
+[node name="Cristal" type="StaticBody2D" unique_id=337954845 groups=["cristals"]]
+z_index = -1
+rotation = 0.3926991
+collision_layer = 8
+script = ExtResource("1_a6gmn")
+crystal_type = "Refractor"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=93035200]
+position = Vector2(0, -4)
+scale = Vector2(1.8000014, 1)
+shape = SubResource("SegmentShape2D_2nftw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=430546312]
+position = Vector2(1.009742e-28, -7)
+scale = Vector2(0.050632905, 0.06632653)
+texture = ExtResource("2_a52ap")
+region_enabled = true
+region_rect = Rect2(1.5884552, 0.25, 158.41154, 294.5)
