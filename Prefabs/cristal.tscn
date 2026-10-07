@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cgvcc85v6026g" path="res://Assets/Tiles/crystal-pixel.png" id="2_ss8ss"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_2nftw"]
-a = Vector2(0, -11.999999)
-b = Vector2(0, 4.9999995)
+a = Vector2(-5.2981864e-07, -8.999999)
+b = Vector2(-5.2981864e-07, 7.9999995)
 
 [node name="Cristal" type="StaticBody2D" unique_id=337954845 groups=["cristals"]]
 z_index = -1
@@ -13,12 +13,12 @@ collision_layer = 8
 script = ExtResource("1_05v7t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=93035200]
-position = Vector2(0, -4)
+position = Vector2(9.536743e-07, -1.1920929e-07)
 scale = Vector2(1.8000014, 1)
 shape = SubResource("SegmentShape2D_2nftw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=430546312]
-position = Vector2(1.009742e-28, -7)
+position = Vector2(-1.2037062e-35, 0)
 scale = Vector2(0.050632905, 0.06632653)
 texture = ExtResource("2_ss8ss")
 region_enabled = true
