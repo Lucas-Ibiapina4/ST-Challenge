@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bpbttwd4qqty7" path="res://Assets/world_tileset.png" id="1_ba8gm"]
 [ext_resource type="Script" uid="uid://dlcg047jvunhp" path="res://Prefabs/door.gd" id="1_kvppq"]
-[ext_resource type="Script" uid="uid://la1kgh0kg25b" path="res://door_reciver.gd" id="2_0phs7"]
+[ext_resource type="Script" uid="uid://la1kgh0kg25b" path="res://Scripts/door_reciver.gd" id="2_0phs7"]
 [ext_resource type="Texture2D" uid="uid://bby13gla66cc0" path="res://Assets/fruit.png" id="2_v6xrn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v6xrn"]
@@ -48,7 +48,7 @@ animations = [{
 radius = 4.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eabt8"]
-size = Vector2(16, 16)
+size = Vector2(16, 17)
 
 [node name="door" type="Node2D" unique_id=1651939149]
 script = ExtResource("1_kvppq")
@@ -60,6 +60,7 @@ animation = &"teste"
 [node name="DoorReceiver" type="StaticBody2D" parent="." unique_id=830270922]
 unique_name_in_owner = true
 position = Vector2(0, -16)
+collision_layer = 8
 script = ExtResource("2_0phs7")
 hold_time = 0.4
 
@@ -74,6 +75,9 @@ region_rect = Rect2(1.7406311, 17.228771, 12.319004, 15.189453)
 
 [node name="TransitionArea2D" type="Area2D" parent="." unique_id=1973653967]
 unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionArea2D" unique_id=1566881849]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_eabt8")
