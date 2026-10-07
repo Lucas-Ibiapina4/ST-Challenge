@@ -67,7 +67,13 @@ func _physics_process(_delta: float) -> void:
 			#adiciona o ponto de colisao ao array e transforma ele em uma
 			#coordenada local pra gerar o caminho da luz
 			beam_points.append(to_local(collision_point))
-			caminho.append("%s (pai: %s, layer: %d, grupos: %s)" % [object.name, object.get_parent().name, object.collision_layer, object.get_groups()])
+			var layer_info = object.collision_layer if object is CollisionObject2D else "N/A"
+			caminho.append("%s (pai: %s, layer: %s, grupos: %s)" % [
+				object.name, 
+				object.get_parent().name if object.get_parent() else "Nenhum", 
+				layer_info, 
+				object.get_groups()
+			])
 			
 			if _no_grupo(object, "cristals"):
 				
