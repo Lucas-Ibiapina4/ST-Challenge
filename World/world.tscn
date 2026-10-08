@@ -1,19 +1,31 @@
 [gd_scene format=3 uid="uid://ct1mosl3l7lgh"]
 
+[ext_resource type="Script" uid="uid://crucwvxdvvuik" path="res://World/world.gd" id="1_8a836"]
 [ext_resource type="PackedScene" uid="uid://c6iselkr106xh" path="res://Prefabs/player.tscn" id="1_62w18"]
 
 [node name="world" type="Node2D" unique_id=1433157194]
-
-[node name="Player" parent="." unique_id=1030101800 instance=ExtResource("1_62w18")]
+script = ExtResource("1_8a836")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=257493923]
+unique_name_in_owner = true
+position = Vector2(2, -104)
+zoom = Vector2(3, 3)
+
+[node name="Player" parent="." unique_id=1030101800 instance=ExtResource("1_62w18")]
+unique_name_in_owner = true
+z_index = 10
+position = Vector2(0, -9)
 
 [node name="CanvasLayer_UI" type="CanvasLayer" parent="." unique_id=1299041735]
 
 [node name="HUD" type="Control" parent="CanvasLayer_UI" unique_id=1109735627]
 layout_mode = 3
 anchors_preset = 0
+offset_top = -104.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = -64.0
+metadata/_edit_use_anchors_ = true
 
 [node name="LevelContainer" type="Node2D" parent="." unique_id=1880469959]
+unique_name_in_owner = true
+position = Vector2(-43, -104)

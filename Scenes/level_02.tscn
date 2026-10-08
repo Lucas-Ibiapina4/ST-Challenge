@@ -28,3 +28,9 @@ tile_set = ExtResource("1_ivlrf")
 z_index = 0
 position = Vector2(-117, -211)
 rotation = 0.0
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=6716366 groups=["spawn_point"]]
+position = Vector2(-166, -108)
+
+[node name="CameraPoint" type="Marker2D" parent="." unique_id=1759833033 groups=["camera_point"]]
+position = Vector2(0, -108)
