@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cy3jjuwrrvpuk" path="res://Scripts/player_mover_component.gd" id="2_xywv5"]
 [ext_resource type="Script" uid="uid://dr1ceyw0eab8m" path="res://Scripts/cristal_conjurer_component.gd" id="3_1cb6o"]
 [ext_resource type="PackedScene" uid="uid://bofn53jjdc2an" path="res://Prefabs/cristal.tscn" id="4_2nftw"]
+[ext_resource type="PackedScene" uid="uid://ddkeuaig81mfw" path="res://Prefabs/cristalVariation.tscn" id="5_knrd4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hck1p"]
 atlas = ExtResource("1_knrd4")
@@ -126,7 +127,7 @@ script = ExtResource("2_xywv5")
 
 [node name="CristalConjurerComponent" type="Node2D" parent="." unique_id=2829203]
 script = ExtResource("3_1cb6o")
-crystal_scene = ExtResource("4_2nftw")
+crystal_scenes = Array[PackedScene]([ExtResource("4_2nftw"), ExtResource("5_knrd4")])
 
 [node name="SpawnMarker" type="Marker2D" parent="CristalConjurerComponent" unique_id=746135054]
 position = Vector2(13, -3)

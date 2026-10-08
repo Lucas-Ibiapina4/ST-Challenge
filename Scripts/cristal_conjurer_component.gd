@@ -11,7 +11,7 @@ const SPAWN_OFFSET_X := 15.0     # distância do cristal à frente da princesa
 const PICKUP_RANGE := 48.0       # alcance para recolher um cristal
 const CRYSTAL_GROUP := "cristals"
 
-@export var crystal_scene: PackedScene
+@export var crystal_scenes: Array[PackedScene]
 @export var crystal_types: Array[String] = ["Reflector", "Refractor"]
 @onready var shape_cast: ShapeCast2D = $SpawnMarker/ShapeCast2D
 @onready var spawn_marker: Marker2D = $SpawnMarker
@@ -72,11 +72,12 @@ func _step_rotation(dir: int) -> void:
 # --- Tipo de cristal -----------------------------------------------------
 func _cycle_type() -> void:
 	active_type_index = wrapi(active_type_index + 1, 0, crystal_types.size())
+	print("TIPO ATUAL: ", active_type(), " | ÍNDICE: ", active_type_index)
 	_emit_inventory()
 	
 # --- Conjurar ------------------------------------------------------------
 func _try_conjure() -> void:
-	if crystal_scene == null:
+	if crystal_scenes.is_empty():
 		push_warning("crystal_scene não atribuído no Inspector")
 		return
 	if remaining_count <= 0:
@@ -90,13 +91,15 @@ func _try_conjure() -> void:
 		push_warning("espaço ocupado em %s" % spawn_marker.global_position)
 		return
 
+	var crystal_scene:= crystal_scenes[active_type_index]
+	print("ÍNDICE: ", active_type_index, " | CENA: ", crystal_scene.resource_path)
 	var crystal := crystal_scene.instantiate() as Node2D
 	print("[CONJURER] spawnando '%s' de %s | layer=%d | grupos=%s"
 	% [crystal.name, crystal_scene.resource_path, crystal.collision_layer, crystal.get_groups()])
 	crystal.crystal_type = active_type()
 	floor_node.add_child(crystal)
 	crystal.global_position = spawn_marker.global_position
-	crystal.rotation_degrees = pending_rotation_degrees()
+	crystal.rotation_degrees += pending_rotation_degrees()
 
 	remaining_count -= 1
 	_emit_inventory()
