@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://bo5hxu7igalm4"]
 
-[ext_resource type="PackedScene" uid="uid://c6iselkr106xh" path="res://Prefabs/player.tscn" id="1_dq1ln"]
 [ext_resource type="PackedScene" uid="uid://2fws08272vcf" path="res://Prefabs/light.tscn" id="2_t12bt"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ycpi2"]
@@ -17,14 +16,7 @@ size = Vector2(31, 159.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dgr2y"]
 size = Vector2(53.5, 112.5)
 
-[node name="Level01" type="Node2D" unique_id=2013607221 groups=["floor"]]
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=686021449]
-position = Vector2(0, -111)
-zoom = Vector2(3, 3)
-
-[node name="Player" parent="." unique_id=1030101800 instance=ExtResource("1_dq1ln")]
-position = Vector2(-171, -161)
+[node name="Level03" type="Node2D" unique_id=2013607221 groups=["floor"]]
 
 [node name="Light" parent="." unique_id=1077566341 instance=ExtResource("2_t12bt")]
 position = Vector2(1, -216.99998)

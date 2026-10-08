@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bofn53jjdc2an"]
 
 [ext_resource type="Script" uid="uid://b01my856tp25b" path="res://Scripts/cristal.gd" id="1_05v7t"]
-[ext_resource type="Texture2D" uid="uid://cgvcc85v6026g" path="res://Assets/Tiles/crystal-pixel.png" id="2_ss8ss"]
+[ext_resource type="Texture2D" uid="uid://cqlxhvlyt8x01" path="res://Assets/Tiles/crystal.png" id="2_ss8ss"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_2nftw"]
 a = Vector2(-5.2981864e-07, -8.999999)
@@ -18,8 +18,7 @@ scale = Vector2(1.8000014, 1)
 shape = SubResource("SegmentShape2D_2nftw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=430546312]
-position = Vector2(-1.2037062e-35, 0)
-scale = Vector2(0.050632905, 0.06632653)
+scale = Vector2(0.5, 0.647)
 texture = ExtResource("2_ss8ss")
 region_enabled = true
-region_rect = Rect2(1.5884552, 0.25, 158.41154, 294.5)
+region_rect = Rect2(9.796478, 0.25, 12.919579, 32.93023)
