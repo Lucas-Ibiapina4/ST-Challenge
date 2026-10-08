@@ -858,3 +858,9 @@ position = Vector2(152, -112)
 [node name="Light" parent="." unique_id=1077566341 instance=ExtResource("2_pkws4")]
 position = Vector2(-1, -240)
 rotation = -6.2831855
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=974095503 groups=["spawn_point"]]
+position = Vector2(-157, -93)
+
+[node name="CameraPoint" type="Marker2D" parent="." unique_id=1452998731 groups=["camera_point"]]
+position = Vector2(0, -111)
