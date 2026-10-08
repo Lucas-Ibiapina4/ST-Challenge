@@ -5,7 +5,7 @@ extends Node2D
 @onready var feixe: Line2D = $Feixe
 
 ## Quantas vezes o feixe pode refletir
-@export var max_reflexoes := 4
+@export var max_reflexoes := 10
 ## Comprimento de cada trecho do raio
 @export var comprimento := 500.0
 @export var debug := true
