@@ -130,7 +130,7 @@ script = ExtResource("3_1cb6o")
 crystal_scenes = Array[PackedScene]([ExtResource("4_2nftw"), ExtResource("5_knrd4")])
 
 [node name="SpawnMarker" type="Marker2D" parent="CristalConjurerComponent" unique_id=746135054]
-position = Vector2(13, -3)
+position = Vector2(13, -9)
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="CristalConjurerComponent/SpawnMarker" unique_id=676555327]
 position = Vector2(0, -2)

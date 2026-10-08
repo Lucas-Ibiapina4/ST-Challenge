@@ -1,10 +1,10 @@
-[gd_scene format=3 uid="uid://df10m1e860y2e"]
+[gd_resource type="TileSet" format=3 uid="uid://w7hr617nl0ga"]
 
-[ext_resource type="Texture2D" uid="uid://w66nqntc0ncj" path="res://Assets/Tiles/TileV1.png" id="1_y5hnn"]
-[ext_resource type="Texture2D" uid="uid://dnnp2ylhaugwm" path="res://Assets/Tiles/TileV1_R1.png" id="2_sf34q"]
+[ext_resource type="Texture2D" uid="uid://w66nqntc0ncj" path="res://Assets/Tiles/TileV1.png" id="1_rxqyi"]
+[ext_resource type="Texture2D" uid="uid://dnnp2ylhaugwm" path="res://Assets/Tiles/TileV1_R1.png" id="2_cl7q5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j3ar7"]
-texture = ExtResource("1_y5hnn")
+texture = ExtResource("1_rxqyi")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
@@ -263,7 +263,7 @@ texture = ExtResource("1_y5hnn")
 3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_biski"]
-texture = ExtResource("2_sf34q")
+texture = ExtResource("2_cl7q5")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 1
@@ -522,7 +522,7 @@ texture = ExtResource("2_sf34q")
 3:3/0/terrain = 1
 3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSet" id="TileSet_pfp22"]
+[resource]
 physics_layer_0/collision_layer = 15
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Wood 1"
@@ -531,12 +531,3 @@ terrain_set_0/terrain_1/name = "Wood 2"
 terrain_set_0/terrain_1/color = Color(0.9817104, 0.8336345, 0, 1)
 sources/0 = SubResource("TileSetAtlasSource_j3ar7")
 sources/1 = SubResource("TileSetAtlasSource_biski")
-
-[node name="Main-Tileset" type="Node2D" unique_id=1269743207]
-
-[node name="Background" type="TileMapLayer" parent="." unique_id=280678091]
-tile_set = SubResource("TileSet_pfp22")
-collision_enabled = false
-
-[node name="Floor" type="TileMapLayer" parent="." unique_id=455809762]
-tile_set = SubResource("TileSet_pfp22")

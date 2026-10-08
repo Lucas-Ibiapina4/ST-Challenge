@@ -20,7 +20,7 @@ size = Vector2(53.5, 112.5)
 [node name="Level01" type="Node2D" unique_id=2013607221 groups=["floor"]]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=686021449]
-position = Vector2(-5, -111)
+position = Vector2(0, -111)
 zoom = Vector2(3, 3)
 
 [node name="Player" parent="." unique_id=1030101800 instance=ExtResource("1_62vnq")]
