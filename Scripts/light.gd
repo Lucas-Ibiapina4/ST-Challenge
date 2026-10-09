@@ -3,6 +3,9 @@ extends Node2D
 
 @onready var raio: RayCast2D = $Raio
 @onready var feixe: Line2D = $Feixe
+@onready var particles: GPUParticles2D = $Particles
+@onready var collision_efects: Node2D = $CollisionEfects
+var collision_particles: Array[GPUParticles2D] = []
 
 ## Quantas vezes o feixe pode refletir
 @export var max_reflexoes := 10
@@ -27,6 +30,12 @@ func _ready() -> void:
 	raio.set_collision_mask_value(1, true)
 	raio.set_collision_mask_value(4, true)
 	_log("pronto | mask do raio=%d (deve ser 9)" % raio.collision_mask)
+	
+	for i in range(max_reflexoes):
+		var new_particles = particles.duplicate()
+		collision_efects.add_child(new_particles)
+		collision_particles.append(new_particles)
+		
 
 
 func _physics_process(_delta: float) -> void:
@@ -62,6 +71,10 @@ func _physics_process(_delta: float) -> void:
 		if raio.is_colliding():
 			#pega o ponto em que a colisao ocorre
 			var collision_point = raio.get_collision_point()
+			
+			collision_particles[i].global_position = collision_point
+			collision_particles[i].emitting = true
+			
 			#salva o tipo de objeto com o qual ocorreu a colisao
 			var object = raio.get_collider()
 			#adiciona o ponto de colisao ao array e transforma ele em uma

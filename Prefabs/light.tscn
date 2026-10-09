@@ -1,6 +1,26 @@
 [gd_scene format=3 uid="uid://2fws08272vcf"]
 
 [ext_resource type="Script" uid="uid://cbo1qxv3fjtue" path="res://Scripts/light.gd" id="1_6tkx2"]
+[ext_resource type="Texture2D" uid="uid://bnuygprhrvosi" path="res://Assets/LaserBeam1.png" id="2_1sa5l"]
+
+[sub_resource type="Curve" id="Curve_1sa5l"]
+_data = [Vector2(0, 0.17472124), 0.0, 0.0, 0, 0, Vector2(1, 0.6319703), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1sa5l"]
+curve = SubResource("Curve_1sa5l")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d3ie7"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0.5, 0.5, 1)
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_1sa5l")
+color = Color(1, 1, 0.32156864, 1)
 
 [node name="Light" type="Node2D" unique_id=1077566341]
 z_index = -1
@@ -13,3 +33,16 @@ collision_mask = 9
 [node name="Feixe" type="Line2D" parent="." unique_id=815806780]
 points = PackedVector2Array(0, 0, 0, 331)
 width = 3.0
+default_color = Color(1, 1, 0.32156864, 1)
+
+[node name="Particles" type="GPUParticles2D" parent="." unique_id=742222586]
+position = Vector2(1, 1)
+scale = Vector2(-0.11999877, 0.12000172)
+amount = 20
+texture = ExtResource("2_1sa5l")
+lifetime = 0.5
+speed_scale = 0.3
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_d3ie7")
+
+[node name="CollisionEfects" type="Node2D" parent="." unique_id=1539274245]

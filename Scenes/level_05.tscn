@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c6iselkr106xh" path="res://Prefabs/player.tscn" id="4_wajwu"]
 
 [node name="Level05" type="Node2D" unique_id=2013607221 groups=["floor"]]
+position = Vector2(608, 457)
 
 [node name="Light" parent="." unique_id=1077566341 instance=ExtResource("2_nxh4y")]
 position = Vector2(150.00002, -214.00002)
@@ -24,7 +25,7 @@ tile_map_data = PackedByteArray("AAD/////AQABAAEAAAD///7/AQABAAEAAAD///3/AQABAAE
 tile_set = ExtResource("3_6hhvo")
 
 [node name="Player" parent="Tiles" unique_id=1030101800 instance=ExtResource("4_wajwu")]
-position = Vector2(122, -74)
+position = Vector2(83, -162)
 
 [node name="door" parent="Tiles" unique_id=1651939149 instance=ExtResource("3_nxh4y")]
 position = Vector2(-161, -75)
