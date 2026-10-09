@@ -8,10 +8,6 @@
 [node name="Level05" type="Node2D" unique_id=2013607221 groups=["floor"]]
 position = Vector2(608, 457)
 
-[node name="Light" parent="." unique_id=1077566341 instance=ExtResource("2_nxh4y")]
-position = Vector2(150.00002, -214.00002)
-rotation = 0.7853982
-
 [node name="Tiles" type="Node2D" parent="." unique_id=402509018]
 
 [node name="Background" type="TileMapLayer" parent="Tiles" unique_id=1095678720]
@@ -27,5 +23,11 @@ tile_set = ExtResource("3_6hhvo")
 [node name="Player" parent="Tiles" unique_id=1030101800 instance=ExtResource("4_wajwu")]
 position = Vector2(83, -162)
 
-[node name="door" parent="Tiles" unique_id=1651939149 instance=ExtResource("3_nxh4y")]
+[node name="door" parent="." unique_id=1651939149 instance=ExtResource("3_nxh4y")]
 position = Vector2(-161, -75)
+
+[node name="Player" parent="." unique_id=1030101800 instance=ExtResource("4_wajwu")]
+position = Vector2(122, -74)
+
+[node name="CameraPoint" type="Marker2D" parent="." unique_id=1065851863 groups=["spawn_point"]]
+position = Vector2(0, -117)

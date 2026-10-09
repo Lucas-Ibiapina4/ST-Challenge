@@ -27,3 +27,9 @@ rotation = 1.1920599
 
 [node name="door" parent="." unique_id=1651939149 instance=ExtResource("3_6e2f3")]
 position = Vector2(-28, -80.999985)
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1457814282 groups=["spawn_point"]]
+position = Vector2(-167, -164)
+
+[node name="CameraPoint" type="Marker2D" parent="." unique_id=1367222778 groups=["camera_point"]]
+position = Vector2(0, -128)
