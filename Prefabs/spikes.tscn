@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dn0i4ob87s2d1"]
+
+[ext_resource type="PackedScene" uid="uid://drfx7t15a21wi" path="res://Prefabs/hazard.tscn" id="1_s0g1x"]
+
+[node name="spikes" unique_id=2052100039 instance=ExtResource("1_s0g1x")]
+monitoring = false
+cause = &"spikes"

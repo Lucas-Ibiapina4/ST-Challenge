@@ -1,10 +1,13 @@
 [gd_scene format=4 uid="uid://bo5hxu7igalm4"]
 
+[ext_resource type="Script" uid="uid://c0yrybijmaur" path="res://Scripts/floor.gd" id="1_6e2f3"]
 [ext_resource type="TileSet" uid="uid://w7hr617nl0ga" path="res://Ressources/main_Tile.tres" id="1_cpqw5"]
 [ext_resource type="PackedScene" uid="uid://2fws08272vcf" path="res://Prefabs/light.tscn" id="2_t12bt"]
 [ext_resource type="PackedScene" uid="uid://daljnlm5chr38" path="res://Prefabs/door.tscn" id="3_6e2f3"]
 
 [node name="Level03" type="Node2D" unique_id=2013607221 groups=["floor"]]
+script = ExtResource("1_6e2f3")
+crystal_quota = 2
 
 [node name="Tiles" type="Node2D" parent="." unique_id=1618788797]
 position = Vector2(-16, -47.999985)

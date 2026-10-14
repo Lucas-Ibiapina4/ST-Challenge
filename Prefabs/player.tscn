@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://c6iselkr106xh"]
 
+[ext_resource type="Script" uid="uid://r062yi74u4vs" path="res://Scripts/player.gd" id="1_4qbli"]
 [ext_resource type="Texture2D" uid="uid://bcivrcmi6qswr" path="res://Assets/Princess/idle.png" id="1_hck1p"]
 [ext_resource type="Texture2D" uid="uid://3q3qkersr7b6" path="res://Assets/Princess/animatedPrincess-Sheet.png" id="1_knrd4"]
 [ext_resource type="Script" uid="uid://cy3jjuwrrvpuk" path="res://Scripts/player_mover_component.gd" id="2_xywv5"]
 [ext_resource type="Script" uid="uid://dr1ceyw0eab8m" path="res://Scripts/cristal_conjurer_component.gd" id="3_1cb6o"]
 [ext_resource type="PackedScene" uid="uid://bofn53jjdc2an" path="res://Prefabs/cristal.tscn" id="4_2nftw"]
 [ext_resource type="PackedScene" uid="uid://ddkeuaig81mfw" path="res://Prefabs/cristalVariation.tscn" id="5_knrd4"]
+[ext_resource type="Script" uid="uid://c6xdpq2b017eu" path="res://Prefabs/hurtbox_component.gd" id="7_juxdh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hck1p"]
 atlas = ExtResource("1_hck1p")
@@ -158,8 +160,11 @@ height = 28.0
 radius = 3.0
 height = 15.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eabt8"]
+
 [node name="Player" type="CharacterBody2D" unique_id=1030101800 groups=["player"]]
 collision_layer = 2
+script = ExtResource("1_4qbli")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=962762715]
 position = Vector2(0, -12.000001)
@@ -187,3 +192,15 @@ position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_gvdsg")
 target_position = Vector2(0, 0)
 collision_mask = 9
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=1601948837]
+scale = Vector2(1, 0.92000043)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("7_juxdh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=306281839]
+position = Vector2(0, -10.869561)
+scale = Vector2(0.71821654, -0.96164614)
+shape = SubResource("CapsuleShape2D_eabt8")
