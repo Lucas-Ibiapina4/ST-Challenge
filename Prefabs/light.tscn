@@ -30,10 +30,21 @@ script = ExtResource("1_6tkx2")
 [node name="Raio" type="RayCast2D" parent="." unique_id=133041481]
 collision_mask = 9
 
+[node name="FeixeSegundaBorda" type="Line2D" parent="." unique_id=1288268032]
+width = 9.0
+default_color = Color(1, 1, 0, 0.56078434)
+
 [node name="Feixe" type="Line2D" parent="." unique_id=815806780]
 points = PackedVector2Array(0, 0, 0, 331)
-width = 3.0
-default_color = Color(1, 1, 0.32156864, 1)
+width = 7.0
+default_color = Color(0.7570089, 0.7570096, 0, 1)
+
+[node name="FeixeBordaMaior" type="Line2D" parent="." unique_id=1747900395]
+width = 5.0
+default_color = Color(0.84708464, 0.84708464, 1.1551381e-06, 1)
+
+[node name="FeixeBorda" type="Line2D" parent="." unique_id=2134830665]
+width = 2.0
 
 [node name="Particles" type="GPUParticles2D" parent="." unique_id=742222586]
 position = Vector2(1, 1)

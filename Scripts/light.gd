@@ -3,6 +3,9 @@ extends Node2D
 
 @onready var raio: RayCast2D = $Raio
 @onready var feixe: Line2D = $Feixe
+@onready var feixe_borda: Line2D = $FeixeBorda
+@onready var feixe_borda_maior: Line2D = $FeixeBordaMaior
+@onready var feixe_segunda_borda: Line2D = $FeixeSegundaBorda
 @onready var particles: GPUParticles2D = $Particles
 @onready var collision_efects: Node2D = $CollisionEfects
 var collision_particles: Array[GPUParticles2D] = []
@@ -131,6 +134,9 @@ func _physics_process(_delta: float) -> void:
 	raio.position = Vector2.ZERO
 	
 	#Efetivamente desenha uma linha que passa por todos os pontos
+	feixe_segunda_borda.points = PackedVector2Array(beam_points)
+	feixe_borda_maior.points = PackedVector2Array(beam_points)
+	feixe_borda.points = PackedVector2Array(beam_points)
 	feixe.points = PackedVector2Array(beam_points)
 	
 	#avisa a porta se o feixe comecou ou parou de atingi-la
