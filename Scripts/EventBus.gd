@@ -3,7 +3,9 @@ extends Node
 ## Emite: CrystalConjurerComponent (ao entrar no andar, conjurar ou recolher).
 ## Escuta: HUD → atualiza o contador e o ícone de cristal.
 @warning_ignore("unused_signal")
-signal crystal_inventory_changed(remaining_count: int, active_type: String)
+signal crystal_inventory_changed(remaining: int, max_quota: int, crystal_type: String)
+
+signal crystal_rotation_changed(step: int)   # 0..7, em passos de 45°
 # --- Porta ---------------------------------------------------------------
 ## Emite: Door, depois de destrancar ao receber light_received do DoorReceiver.
 ## Escuta: HUD → feedback de porta aberta.

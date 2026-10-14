@@ -63,6 +63,7 @@ func load_quota(quota: int) -> void:
 	_max_quota = quota
 	remaining_count = quota
 	pending_step = 0
+	_emit_rotation()
 	_next_step_in = 0.0
 	_emit_inventory()
 
@@ -76,6 +77,7 @@ func reset_crystals() -> void:
 		node.queue_free()
 	remaining_count = _max_quota
 	pending_step = 0
+	_emit_rotation()
 	_next_step_in = 0.0
 	_emit_inventory()
 
@@ -120,6 +122,7 @@ func _handle_rotation_input(delta: float) -> void:
 
 func _step_rotation(dir: int) -> void:
 	pending_step = wrapi(pending_step + dir, 0, STEPS)
+	_emit_rotation()
 
 
 # --- Setas (compartilhadas entre girar e selecionar) ---------------------
@@ -283,4 +286,10 @@ func _current_floor() -> Node:
 
 
 func _emit_inventory() -> void:
-	EventBus.crystal_inventory_changed.emit(remaining_count, active_type())
+	EventBus.crystal_inventory_changed.emit(remaining_count, _max_quota, active_type())
+
+
+func _emit_rotation() -> void:
+	EventBus.crystal_rotation_changed.emit(pending_step)
+
+	

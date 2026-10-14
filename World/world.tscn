@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://crucwvxdvvuik" path="res://World/world.gd" id="1_8a836"]
 [ext_resource type="PackedScene" uid="uid://c6iselkr106xh" path="res://Prefabs/player.tscn" id="1_62w18"]
+[ext_resource type="PackedScene" uid="uid://ok0jl7ultu1e" path="res://Prefabs/hud.tscn" id="3_j8job"]
 
 [node name="world" type="Node2D" unique_id=1433157194]
 script = ExtResource("1_8a836")
@@ -18,13 +19,7 @@ position = Vector2(0, -9)
 
 [node name="CanvasLayer_UI" type="CanvasLayer" parent="." unique_id=1299041735]
 
-[node name="HUD" type="Control" parent="CanvasLayer_UI" unique_id=1109735627]
-layout_mode = 3
-anchors_preset = 0
-offset_top = -104.0
-offset_right = 40.0
-offset_bottom = -64.0
-metadata/_edit_use_anchors_ = true
+[node name="hud" parent="CanvasLayer_UI" unique_id=1302511299 instance=ExtResource("3_j8job")]
 
 [node name="LevelContainer" type="Node2D" parent="." unique_id=1880469959]
 unique_name_in_owner = true

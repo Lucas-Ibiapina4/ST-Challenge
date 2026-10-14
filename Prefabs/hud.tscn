@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://ok0jl7ultu1e"]
+
+[ext_resource type="Script" uid="uid://evqpd5sfv7yq" path="res://Scripts/hud.gd" id="1_hymbe"]
+[ext_resource type="Texture2D" uid="uid://ohfm1efdh0mn" path="res://charge_full.tres" id="2_4df1e"]
+[ext_resource type="Texture2D" uid="uid://bg8ylbw4xq3g3" path="res://charge_empty.tres" id="3_7w0ef"]
+[ext_resource type="Texture2D" uid="uid://bdn67yo7tvnhg" path="res://dial_frame1.tres" id="4_jqt71"]
+[ext_resource type="Texture2D" uid="uid://d5i126xtgbae" path="res://dial_frame2.tres" id="5_6vqeg"]
+[ext_resource type="Texture2D" uid="uid://djc1rcdc1rt8b" path="res://dial_frame3.tres" id="6_pjv7g"]
+[ext_resource type="Texture2D" uid="uid://cf5guc10op5cj" path="res://dial_frame4.tres" id="7_ikhm1"]
+
+[node name="hud" type="Control" unique_id=1302511299]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_hymbe")
+charge_full = ExtResource("2_4df1e")
+charge_empty = ExtResource("3_7w0ef")
+dial_frames = Array[Texture2D]([ExtResource("4_jqt71"), ExtResource("5_6vqeg"), ExtResource("6_pjv7g"), ExtResource("7_ikhm1")])
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1678806407]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=425588731]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="RotationDial" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=662046708]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Charges" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=264591254]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
