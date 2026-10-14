@@ -2,9 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://daljnlm5chr38" path="res://Prefabs/door.tscn" id="1_cejks"]
 [ext_resource type="TileSet" uid="uid://w7hr617nl0ga" path="res://Ressources/main_Tile.tres" id="1_ivlrf"]
+[ext_resource type="Script" uid="uid://c0yrybijmaur" path="res://Scripts/floor.gd" id="1_wfe4l"]
 [ext_resource type="PackedScene" uid="uid://2fws08272vcf" path="res://Prefabs/light.tscn" id="2_ivlrf"]
+[ext_resource type="PackedScene" uid="uid://dn0i4ob87s2d1" path="res://Prefabs/spikes.tscn" id="5_wfe4l"]
 
 [node name="Level02" type="Node2D" unique_id=2013607221 groups=["floor"]]
+script = ExtResource("1_wfe4l")
 
 [node name="door" parent="." unique_id=1651939149 instance=ExtResource("1_cejks")]
 z_index = 2
@@ -34,3 +37,6 @@ position = Vector2(-166, -108)
 
 [node name="CameraPoint" type="Marker2D" parent="." unique_id=1759833033 groups=["camera_point"]]
 position = Vector2(0, -108)
+
+[node name="spikes" parent="." unique_id=2052100039 instance=ExtResource("5_wfe4l")]
+position = Vector2(8, -49)
