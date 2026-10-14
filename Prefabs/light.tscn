@@ -38,7 +38,7 @@ default_color = Color(1, 1, 0.32156864, 1)
 [node name="Particles" type="GPUParticles2D" parent="." unique_id=742222586]
 position = Vector2(1, 1)
 scale = Vector2(-0.11999877, 0.12000172)
-amount = 20
+amount = 10
 texture = ExtResource("2_1sa5l")
 lifetime = 0.5
 speed_scale = 0.3

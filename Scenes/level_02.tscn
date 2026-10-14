@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dn0i4ob87s2d1" path="res://Prefabs/spikes.tscn" id="5_wfe4l"]
 
 [node name="Level02" type="Node2D" unique_id=2013607221 groups=["floor"]]
+position = Vector2(517, 481)
 script = ExtResource("1_wfe4l")
 
 [node name="door" parent="." unique_id=1651939149 instance=ExtResource("1_cejks")]
@@ -29,7 +30,7 @@ tile_set = ExtResource("1_ivlrf")
 
 [node name="Light" parent="." unique_id=1077566341 instance=ExtResource("2_ivlrf")]
 z_index = 0
-position = Vector2(-117, -211)
+position = Vector2(-117, -215)
 rotation = 0.0
 
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=6716366 groups=["spawn_point"]]

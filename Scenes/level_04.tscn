@@ -6,11 +6,11 @@
 [ext_resource type="TileSet" uid="uid://w7hr617nl0ga" path="res://Ressources/main_Tile.tres" id="2_u2vms"]
 
 [node name="Level04" type="Node2D" unique_id=2013607221 groups=["floor"]]
-position = Vector2(0, -2)
+position = Vector2(470, 429)
 script = ExtResource("1_u2vms")
 
 [node name="Light" parent="." unique_id=1077566341 instance=ExtResource("2_jckys")]
-position = Vector2(0, -211)
+position = Vector2(9, -223.99998)
 rotation = 1.11352
 
 [node name="Tiles" type="Node2D" parent="." unique_id=1373790831]
