@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ce4r5pecjahe6"]
+
+[ext_resource type="Texture2D" uid="uid://cpdpbh6jxmcha" path="res://Assets/LevelBg.png" id="1_4a6i6"]
+
+[node name="Background" type="Node2D" unique_id=607696715]
+z_index = -2
+
+[node name="Bricks" type="Sprite2D" parent="." unique_id=1381481970]
+texture = ExtResource("1_4a6i6")
+centered = false
+
+[node name="Bricks2" type="Sprite2D" parent="." unique_id=1005473717]
+position = Vector2(-288, 0)
+texture = ExtResource("1_4a6i6")
+centered = false
+
+[node name="Bricks3" type="Sprite2D" parent="." unique_id=1618900919]
+position = Vector2(0, -175)
+texture = ExtResource("1_4a6i6")
+centered = false
+
+[node name="Bricks4" type="Sprite2D" parent="." unique_id=10805716]
+position = Vector2(-288, -175)
+texture = ExtResource("1_4a6i6")
+centered = false
