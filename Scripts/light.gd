@@ -31,6 +31,8 @@ func _ready() -> void:
 	raio.set_collision_mask_value(4, true)
 	_log("pronto | mask do raio=%d (deve ser 9)" % raio.collision_mask)
 	
+	particles.emitting = false
+	
 	for i in range(max_reflexoes):
 		var new_particles = particles.duplicate()
 		collision_efects.add_child(new_particles)
@@ -58,6 +60,7 @@ func _physics_process(_delta: float) -> void:
 	#limpa as excecoes do frame anterior
 	raio.clear_exceptions()
 	
+	var collision_count := 0
 	for i in range(max_reflexoes):
 		#coloca o RayCast na posicao atual (origem da reflexao)
 		raio.global_position = origin
@@ -72,8 +75,10 @@ func _physics_process(_delta: float) -> void:
 			#pega o ponto em que a colisao ocorre
 			var collision_point = raio.get_collision_point()
 			
-			collision_particles[i].global_position = collision_point
-			collision_particles[i].emitting = true
+			collision_particles[collision_count].global_position = collision_point
+			collision_particles[collision_count].emitting = true
+			
+			collision_count += 1
 			
 			#salva o tipo de objeto com o qual ocorreu a colisao
 			var object = raio.get_collider()
@@ -117,6 +122,10 @@ func _physics_process(_delta: float) -> void:
 			beam_points.append(to_local(final_point))
 			caminho.append("nada")
 			break
+	
+	for i in range(collision_count, collision_particles.size()):
+		collision_particles[i].emitting = false
+		collision_particles[i].restart()
 	
 	#devolve o RayCast para a posicao original
 	raio.position = Vector2.ZERO
