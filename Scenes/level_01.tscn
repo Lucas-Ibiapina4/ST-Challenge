@@ -537,7 +537,7 @@ sources/0 = SubResource("TileSetAtlasSource_s7ctl")
 sources/1 = SubResource("TileSetAtlasSource_g0uxb")
 
 [node name="Level01" type="Node2D" unique_id=2013607221 groups=["floor"]]
-position = Vector2(106, 433)
+position = Vector2(558, 449)
 script = ExtResource("1_g0uxb")
 quota = 1
 

@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cym4t8qnl5aj5"]
+
+[node name="Menu" type="Node2D" unique_id=1717044540]
+
+[node name="Title" type="Label" parent="." unique_id=1947916978]
+offset_left = -3.0
+offset_top = 1.0
+offset_right = 1150.0
+offset_bottom = 222.0
+theme_override_font_sizes/font_size = 100
+text = "Zahara"
+horizontal_alignment = 1
+
+[node name="SubTitle" type="Label" parent="Title" unique_id=692504567]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -103.0
+offset_right = 1152.0
+offset_bottom = 222.0
+theme_override_font_sizes/font_size = 50
+text = "A Fuga de Uma Princesa"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=715002794]
+offset_left = 1.0
+offset_top = 299.0
+offset_right = 1151.0
+offset_bottom = 609.0
+
+[node name="Botoes" type="VBoxContainer" parent="CenterContainer" unique_id=1890770002]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Jogar" type="Button" parent="CenterContainer/Botoes" unique_id=706493022]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "JOGAR"
+
+[node name="Fases" type="Button" parent="CenterContainer/Botoes" unique_id=678051644]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "FASES"
+
+[node name="Configuracoes" type="Button" parent="CenterContainer/Botoes" unique_id=1531220873]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "CONFIGURACOES"
+
+[node name="Créditos" type="Button" parent="CenterContainer/Botoes" unique_id=1606307348]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "CRÉDITOS"
