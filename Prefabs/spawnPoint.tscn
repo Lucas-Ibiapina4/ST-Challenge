@@ -1,3 +1,8 @@
 [gd_scene format=3 uid="uid://bs8pbmck6pj0s"]
 
+[ext_resource type="Texture2D" uid="uid://ce32mewy24mq6" path="res://Assets/EntrancetDoor.png" id="1_mdl1e"]
+
 [node name="Spawn" type="Marker2D" unique_id=293810812]
+
+[node name="EntranceDoor" type="Sprite2D" parent="." unique_id=921197928]
+texture = ExtResource("1_mdl1e")
