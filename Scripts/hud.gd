@@ -5,7 +5,7 @@ extends Control
 @export var charge_full: Texture2D        ## diamante cheio (disponível)
 @export var charge_empty: Texture2D       ## diamante vazado (gasto)
 @export var dial_frames: Array[Texture2D] ## 0°, 45°, 90°, 135° (nessa ordem)
-@export var pixel_scale := 3              ## o CanvasLayer não usa o zoom da câmera
+@export var pixel_scale := 2.5              ## o CanvasLayer não usa o zoom da câmera
 
 @onready var dial: TextureRect = %RotationDial
 @onready var charges: HBoxContainer = %Charges
