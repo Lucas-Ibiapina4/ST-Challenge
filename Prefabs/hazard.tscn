@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://drfx7t15a21wi"]
 
 [ext_resource type="Script" uid="uid://m4egjjb62hox" path="res://Scripts/hazard.gd" id="1_0qld2"]
+[ext_resource type="Texture2D" uid="uid://dv2ruhtnx4usr" path="res://Assets/Thorns.png" id="2_drayx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxqyi"]
-size = Vector2(20, 6)
+size = Vector2(68, 17)
 
 [node name="hazard" type="Area2D" unique_id=2052100039]
 collision_layer = 4
@@ -11,7 +12,11 @@ collision_mask = 0
 script = ExtResource("1_0qld2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1475638193]
+position = Vector2(0, -3)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_drayx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=510265310]
-position = Vector2(0, -3)
+visible = false
+position = Vector2(0, -3.1)
 shape = SubResource("RectangleShape2D_rxqyi")
