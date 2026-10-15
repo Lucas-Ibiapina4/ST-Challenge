@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://c0yrybijmaur" path="res://Scripts/floor.gd" id="1_wfe4l"]
 [ext_resource type="PackedScene" uid="uid://2fws08272vcf" path="res://Prefabs/light.tscn" id="2_ivlrf"]
 [ext_resource type="PackedScene" uid="uid://ce4r5pecjahe6" path="res://Prefabs/background.tscn" id="3_mmtoh"]
-[ext_resource type="PackedScene" uid="uid://c6iselkr106xh" path="res://Prefabs/player.tscn" id="5_wfe4l"]
 
 [node name="Level02" type="Node2D" unique_id=2013607221 groups=["floor"]]
 position = Vector2(517, 481)
@@ -36,6 +35,3 @@ position = Vector2(-166, -108)
 
 [node name="CameraPoint" type="Marker2D" parent="." unique_id=1759833033 groups=["camera_point"]]
 position = Vector2(0, -108)
-
-[node name="Player" parent="." unique_id=1030101800 instance=ExtResource("5_wfe4l")]
-position = Vector2(-128, -85)
