@@ -1,19 +1,7 @@
 extends Node2D
-## CrystalConjurerComponent — instancia e recolhe cristais no andar.
-## Escolhe a rotação ANTES de conjurar; depois de conjurado o cristal é estático.
-## Controla a cota do andar e emite crystal_inventory_changed.
-## Não faz: calcular a luz, abrir a porta.
-##
-## As setas têm duas funções:
-##   - normalmente: giram a rotação pendente (antes de conjurar)
-##   - com "remove_cristal" (E) SEGURADO: percorrem os cristais já colocados
-##     no andar. Ao soltar o E, o cristal destacado é removido.
-##
-## Na morte da princesa, o World chama reset_crystals(): todos os cristais
-## do andar são removidos e a cota volta ao valor inicial.
 
 const STEP_DEG := 45.0
-const STEPS := 8                 # 360 / 45
+const ALL_STEPS := 8             # 360 / 45 — só para validar o que vem do andar
 const REPEAT_DELAY := 0.25       # espera antes de começar a repetir
 const REPEAT_RATE := 0.12        # intervalo entre passos com a tecla segurada
 const SPAWN_OFFSET_X := 15.0     # distância do cristal à frente da princesa
@@ -23,7 +11,8 @@ const HIGHLIGHT := Color(1.4, 1.4, 1.8)   # cor do cristal destacado para remoç
 
 @export var crystal_scenes: Array[PackedScene]
 @export var crystal_types: Array[String] = ["Reflector", "Refractor"]
-@export var remaining_count := 5         # cristais que ainda podem ser conjurados
+@export var remaining_count := 5                       # cristais ainda conjuráveis
+@export var allowed_steps: Array[int] = [0, 1, 2, 3]   # fallback: o andar sobrescreve
 
 @onready var shape_cast: ShapeCast2D = $SpawnMarker/ShapeCast2D
 @onready var spawn_marker: Marker2D = $SpawnMarker
@@ -31,9 +20,10 @@ const HIGHLIGHT := Color(1.4, 1.4, 1.8)   # cor do cristal destacado para remoç
 @onready var player: CharacterBody2D = $".."
 
 var active_type_index := 0       # índice em crystal_types
-var pending_step := 0            # 0..7 — rotação escolhida, em passos de 45°
+var pending_step := 0            # passo real (0..7) que vai para o cristal
+var _rotation_index := 0         # posição dentro de allowed_steps
 var _next_step_in := 0.0
-var _max_quota := 0              # cota total do andar, devolvida na morte
+var _max_quota := 0              # cota total do andar, devolvida ao recolher
 
 # --- Modo de remoção -----------------------------------------------------
 var _removing := false           # true enquanto "remove_cristal" está segurado
@@ -43,9 +33,12 @@ var _original_modulate := Color.WHITE
 
 
 func _ready() -> void:
-	# Segurança: se nenhum andar chamar load_quota, a cota do Inspector vale
-	# como máxima, e o reset na morte não zera o contador.
+	# Segurança: se nenhum andar chamar load_floor_config, os valores do
+	# Inspector valem como configuração do andar.
 	_max_quota = remaining_count
+	allowed_steps = _sanitize_steps(allowed_steps)
+	_rotation_index = 0
+	pending_step = allowed_steps[0]
 
 
 func active_type() -> String:
@@ -56,29 +49,54 @@ func pending_rotation_degrees() -> float:
 	return pending_step * STEP_DEG
 
 
-## Chamado pelo World ao entrar no andar, com a cota exportada do Floor_XX.
-func load_quota(quota: int) -> void:
+## Chamado pelo World ao entrar no andar (e a cada recarga), com os dados
+## exportados do Floor_XX: cota de cristais e rotações liberadas.
+## Resetar o índice aqui é obrigatório: o Player é persistente entre andares,
+## e um índice vindo de um andar com mais rotações estouraria a lista de um
+## andar com menos.
+func load_floor_config(quota: int, steps: Array) -> void:
 	if _removing:
 		_exit_remove_mode()
 	_max_quota = quota
 	remaining_count = quota
-	pending_step = 0
-	_emit_rotation()
+	allowed_steps = _sanitize_steps(steps)
+	_rotation_index = 0
+	pending_step = allowed_steps[0]
 	_next_step_in = 0.0
+	_emit_rotation()
 	_emit_inventory()
+	# Se o andar carregar antes do _ready do HUD, a primeira emissão se perde.
+	# Repetir no fim do frame garante que o HUD comece sincronizado.
+	call_deferred("_emit_rotation")
+	call_deferred("_emit_inventory")
 
 
-## Chamado pelo World quando a princesa morre: remove todos os cristais
-## conjurados no andar e devolve a cota inteira.
+## Descarta passos inválidos ou repetidos. Um andar mal configurado não pode
+## deixar a jogadora sem nenhuma rotação.
+func _sanitize_steps(steps: Array) -> Array[int]:
+	var clean: Array[int] = []
+	for s in steps:
+		var v := int(s)
+		if v >= 0 and v < ALL_STEPS and not clean.has(v):
+			clean.append(v)
+	if clean.is_empty():
+		push_warning("andar sem allowed_steps válidas; usando [0]")
+		clean = [0]
+	return clean
+
+
+## Remove todos os cristais do andar e devolve a cota inteira, sem recarregar
+## a cena. Mantém as rotações liberadas do andar atual.
 func reset_crystals() -> void:
 	if _removing:
-		_exit_remove_mode()      # caso ela tenha morrido segurando o E
+		_exit_remove_mode()
 	for node in get_tree().get_nodes_in_group(CRYSTAL_GROUP):
 		node.queue_free()
 	remaining_count = _max_quota
-	pending_step = 0
-	_emit_rotation()
+	_rotation_index = 0
+	pending_step = allowed_steps[0]
 	_next_step_in = 0.0
+	_emit_rotation()
 	_emit_inventory()
 
 
@@ -120,8 +138,12 @@ func _handle_rotation_input(delta: float) -> void:
 		_next_step_in = REPEAT_RATE
 
 
+## Anda pela lista de rotações liberadas, não pelos 8 passos de 45°.
 func _step_rotation(dir: int) -> void:
-	pending_step = wrapi(pending_step + dir, 0, STEPS)
+	if allowed_steps.size() <= 1:
+		return   # fase 1: só há uma rotação, a seta não faz nada
+	_rotation_index = wrapi(_rotation_index + dir, 0, allowed_steps.size())
+	pending_step = allowed_steps[_rotation_index]
 	_emit_rotation()
 
 
@@ -290,6 +312,4 @@ func _emit_inventory() -> void:
 
 
 func _emit_rotation() -> void:
-	EventBus.crystal_rotation_changed.emit(pending_step)
-
-	
+	EventBus.crystal_rotation_changed.emit(pending_step, allowed_steps)

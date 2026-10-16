@@ -4,7 +4,11 @@ extends Node2D
 ## e hospeda o andar ativo dentro do LevelContainer.
 ##
 ## Morte: o andar inteiro é recarregado do zero (cristais, porta, inimigos),
-## e a cota de cristais volta ao valor exportado no Floor_XX.
+## e a configuração do andar (cota + rotações liberadas) volta aos valores
+## exportados no Floor_XX.
+
+const DEFAULT_QUOTA := 3
+const DEFAULT_STEPS: Array[int] = [0, 1, 2, 3]
 
 @export var debug := true
 @export var respawn_delay := 0.4
@@ -37,18 +41,33 @@ func load_floor(floor_scene: PackedScene) -> void:
 		floor_node.add_to_group("floor")
 	_log("andar carregado: %s" % floor_scene.resource_path)
 
-	# Recarregar a cota também sai do modo de remoção e zera a rotação.
-	var conjurer := _find_conjurer()
-	if conjurer:
-		var quota = floor_node.get("quota")
-		if quota != null:
-			conjurer.load_quota(quota)
-			_log("cota da fase: %d" % quota)
-		else:
-			push_warning("[WORLD] andar sem 'quota' exportada")
-
+	_apply_floor_config(floor_node)
 	_place_camera()
 	respawn_player()
+
+
+## Repassa ao conjurador o que o andar exporta: cota e rotações liberadas.
+## Também sai do modo de remoção e reseta a rotação pendente.
+## Os fallbacks existem porque isto roda a cada morte: um andar mal
+## configurado não pode travar a sessão no meio do teste.
+func _apply_floor_config(floor_node: Node) -> void:
+	var conjurer := _find_conjurer()
+	if conjurer == null:
+		push_warning("[WORLD] nenhum componente com load_floor_config no Player")
+		return
+
+	var quota = floor_node.get("quota")
+	if quota == null:
+		push_warning("[WORLD] andar sem 'quota' exportada; usando %d" % DEFAULT_QUOTA)
+		quota = DEFAULT_QUOTA
+
+	var steps = floor_node.get("allowed_steps")
+	if steps == null:
+		push_warning("[WORLD] andar sem 'allowed_steps' exportada; liberando todas")
+		steps = DEFAULT_STEPS
+
+	conjurer.load_floor_config(int(quota), steps)
+	_log("cota: %d | rotações liberadas: %s" % [int(quota), steps])
 
 
 ## Recarrega o andar atual do zero. Os cristais conjurados são filhos do
@@ -100,7 +119,7 @@ func respawn_player() -> void:
 
 func _find_conjurer() -> Node:
 	for child in player.get_children():
-		if child.has_method("load_quota"):
+		if child.has_method("load_floor_config"):
 			return child
 	return null
 
@@ -112,5 +131,5 @@ func _on_player_died(cause: StringName) -> void:
 	_log("player morreu: %s" % cause)
 	player.freeze()
 	await get_tree().create_timer(respawn_delay).timeout
-	reload_floor()   # recria o andar, recarrega a cota e faz o respawn
+	reload_floor()   # recria o andar, recarrega a config e faz o respawn
 	_reloading = false

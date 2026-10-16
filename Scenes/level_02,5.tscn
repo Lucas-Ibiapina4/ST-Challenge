@@ -10,10 +10,6 @@
 [node name="Level02" type="Node2D" unique_id=2013607221 groups=["floor"]]
 script = ExtResource("1_1rv7o")
 
-[node name="Spawn" parent="." unique_id=293810812 groups=["spawn_point"] instance=ExtResource("2_vheg1")]
-z_index = -1
-position = Vector2(-161, -128)
-
 [node name="door" parent="." unique_id=1651939149 instance=ExtResource("3_q2605")]
 z_index = 2
 position = Vector2(136, -80)
@@ -36,3 +32,7 @@ rotation = 0.0
 
 [node name="CameraPoint" type="Marker2D" parent="." unique_id=1759833033 groups=["camera_point"]]
 position = Vector2(0, -108)
+
+[node name="SpawnPoint" parent="." unique_id=293810812 groups=["spawn_point"] instance=ExtResource("2_vheg1")]
+z_index = -1
+position = Vector2(-161, -128)

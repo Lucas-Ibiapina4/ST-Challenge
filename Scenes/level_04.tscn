@@ -11,7 +11,7 @@
 [node name="Level04" type="Node2D" unique_id=2013607221 groups=["floor"]]
 script = ExtResource("1_u2vms")
 
-[node name="Spawn" parent="." unique_id=293810812 groups=["spawn_point"] instance=ExtResource("2_1kjl0")]
+[node name="SpawnPoint" parent="." unique_id=293810812 groups=["spawn_point"] instance=ExtResource("2_1kjl0")]
 z_index = -1
 position = Vector2(-155, -144)
 scale = Vector2(1, 1.0015936)

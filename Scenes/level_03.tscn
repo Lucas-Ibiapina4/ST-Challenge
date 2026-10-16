@@ -9,8 +9,10 @@
 
 [node name="Level03" type="Node2D" unique_id=2013607221 groups=["floor"]]
 script = ExtResource("1_6e2f3")
+quota = 2
+allowed_steps = Array[int]([0, 1, 3])
 
-[node name="Spawn" parent="." unique_id=293810812 groups=["spawn_point"] instance=ExtResource("2_hslk2")]
+[node name="SpawnPoint" parent="." unique_id=293810812 groups=["spawn_point"] instance=ExtResource("2_hslk2")]
 z_index = -1
 position = Vector2(-144, -160)
 
