@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://w66nqntc0ncj" path="res://Assets/Tiles/TileV1.png" id="3_pkws4"]
 [ext_resource type="PackedScene" uid="uid://ce4r5pecjahe6" path="res://Prefabs/background.tscn" id="4_gr51b"]
 [ext_resource type="PackedScene" uid="uid://bs8pbmck6pj0s" path="res://Prefabs/spawnPoint.tscn" id="7_gr51b"]
-[ext_resource type="PackedScene" uid="uid://bofn53jjdc2an" path="res://Prefabs/cristal.tscn" id="8_gn5x3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s7ctl"]
 texture = ExtResource("3_pkws4")
@@ -540,8 +539,9 @@ sources/1 = SubResource("TileSetAtlasSource_g0uxb")
 [node name="Level01" type="Node2D" unique_id=2013607221 groups=["floor"]]
 script = ExtResource("1_g0uxb")
 quota = 1
+allowed_steps = Array[int]([0])
 
-[node name="Spawn" parent="." unique_id=293810812 groups=["spawn_point"] instance=ExtResource("7_gr51b")]
+[node name="SpawnPoint" parent="." unique_id=293810812 groups=["spawn_point"] instance=ExtResource("7_gr51b")]
 z_index = -1
 position = Vector2(-147, -96)
 
@@ -563,6 +563,3 @@ rotation = 1.0995574
 
 [node name="CameraPoint" type="Marker2D" parent="." unique_id=1452998731 groups=["camera_point"]]
 position = Vector2(0, -111)
-
-[node name="Cristal" parent="." unique_id=337954845 instance=ExtResource("8_gn5x3")]
-position = Vector2(48, -126)

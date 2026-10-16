@@ -20,6 +20,7 @@ position = Vector2(0, -9)
 [node name="CanvasLayer_UI" type="CanvasLayer" parent="." unique_id=1299041735]
 
 [node name="hud" parent="CanvasLayer_UI" unique_id=1302511299 instance=ExtResource("3_j8job")]
+pixel_scale = null
 
 [node name="LevelContainer" type="Node2D" parent="." unique_id=1880469959]
 unique_name_in_owner = true
